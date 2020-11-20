@@ -1,5 +1,4 @@
 ﻿using HttpReplApi.Data;
-using HttpReplApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +37,7 @@ namespace HttpReplApi.Controllers
         {
             var person = await _context.People.FindAsync(id);
 
-            if (person == null)
+            if (person is null)
             {
                 return NotFound();
             }
@@ -77,7 +76,7 @@ namespace HttpReplApi.Controllers
         {
             var person = await _context.People.FindAsync(id);
 
-            if (person == null)
+            if (person is null)
             {
                 return NotFound();
             }

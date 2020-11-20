@@ -1,6 +1,5 @@
 ﻿using HttpReplApi.Data;
 using Microsoft.AspNetCore.Mvc;
-using HttpReplApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace HttpReplApi.Controllers
 {
+
     [Produces("application/json")]
     [Route("[controller]")]
     public class BandsController : ControllerBase
@@ -29,7 +29,7 @@ namespace HttpReplApi.Controllers
         {
             var band = await _context.Bands.FindAsync(id);
 
-            if (band == null)
+            if (band is null)
             {
                 return NotFound();
             }
@@ -68,7 +68,7 @@ namespace HttpReplApi.Controllers
         {
             var band = await _context.Bands.FindAsync(id);
 
-            if (band == null)
+            if (band is null)
             {
                 return NotFound();
             }

@@ -1,8 +1,8 @@
 ﻿using HttpReplApi.Data;
-using HttpReplApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,10 +14,12 @@ namespace HttpReplApi.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly SampleContext _context;
+        private readonly ILogger _logger;
 
-        public MoviesController(SampleContext context)
+        public MoviesController(SampleContext context, ILogger logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -28,8 +30,10 @@ namespace HttpReplApi.Controllers
         public async Task<ActionResult<Movie>> GetById(int id)
         {
             var movie = await _context.Movies.FindAsync(id);
+            var (_, name, year) = movie;
 
-            if (movie == null)
+            _logger.LogInformation($"We have {name} from {year}");
+            if (movie is null)
             {
                 return NotFound();
             }
@@ -68,7 +72,7 @@ namespace HttpReplApi.Controllers
         {
             var movie = await _context.Movies.FindAsync(id);
 
-            if (movie == null)
+            if (movie is null)
             {
                 return NotFound();
             }

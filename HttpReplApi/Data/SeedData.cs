@@ -1,5 +1,4 @@
-﻿using HttpReplApi.Models;
-using System.Linq;
+﻿using System.Linq;
 
 namespace HttpReplApi.Data
 {
@@ -9,12 +8,11 @@ namespace HttpReplApi.Data
         {
             if (!context.People.Any())
             {
-                context.People.AddRange(
-                    new Person { FirstName = "Dave", LastName = "Brock" },
-                    new Person { FirstName = "Carla", LastName = "Waters" },
-                    new Person { FirstName = "Emma", LastName = "Johnston" },
-                    new Person { FirstName = "Jenny", LastName = "Jennifer"},
-                    new Person { FirstName = "Tony", LastName = "Stark" }
+                context.People.AddRange(new Person(1, "Dave", "Brock"),
+                                        new Person(2, "Carla", "Waters"),
+                                        new Person(3, "Emma", "Johnston"),
+                                        new Person(4, "Jenny", "Jennifer"),
+                                        new Person(5, "Tony", "Stark")
                 );
 
                 context.SaveChanges();
@@ -23,9 +21,9 @@ namespace HttpReplApi.Data
             if (!context.Movies.Any())
             {
                 context.Movies.AddRange(
-                    new Movie { Name = "The Usual Suspects", ReleaseYear = 1995 },
-                    new Movie { Name = "From Russia With Love", ReleaseYear = 1963 },
-                    new Movie { Name = "Iron Man", ReleaseYear = 2008 }
+                    new Movie(1, "The Usual Suspects", 1995),
+                    new Movie(2, "From Russia With Love", 1963),
+                    new Movie(3, "Iron Man", 2008)
                 );
 
                 context.SaveChanges();
@@ -34,10 +32,10 @@ namespace HttpReplApi.Data
             if (!context.Bands.Any())
             {
                 context.Bands.AddRange(
-                    new Band { Name = "Led Zeppelin" },
-                    new Band { Name = "Arcade Fire" },
-                    new Band { Name = "The Who" },
-                    new Band { Name = "The Eagles, man" }
+                    new Band(1, "Led Zeppelin"),
+                    new Band(2, "Arcade Fire"),
+                    new Band(3, "The Who"),
+                    new Band(4, "The Eagles, man")
                 );
 
                 context.SaveChanges();

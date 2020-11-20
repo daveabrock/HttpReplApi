@@ -1,5 +1,4 @@
-﻿using HttpReplApi.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace HttpReplApi.Data
 {
